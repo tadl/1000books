@@ -6,13 +6,13 @@ default: &default
 
 development:
   <<: *default
-  database: app-development
+  database: 1000book-development
   username: postgres
   password: <%= ENV['POSTGRES_PASSWORD'] %>
 
 test:
   <<: *default
-  database: app-test
+  database: 1000book-test
   username: postgres
   password: <%= ENV['POSTGRES_PASSWORD'] %>
 

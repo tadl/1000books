@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sample App</title>
+  <title>1,000 Book Challange</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -9,7 +9,41 @@
 </head>
 <body>
 	<div id="main-container" class="container">
-		<%= yield %>
+		<div id="menu" class="col-sm-3">
+			<div class="row">
+				<div id="site_name">1,000 Book Challange</div>
+			</div>
+			<ul class="nav nav-stacked">
+				<% if current_user %>
+					<li>
+						<%= link_to "Sign up New Participants", signup_path %>
+					</li>
+					<li>
+						<b>Find by Parent Name</b>
+						<br>
+						<input type="text" class="search_by_name" placeholder="Search by Name">
+					</li>
+					<li>
+						<br>
+						<b>Find by Parent Card #</b>
+						<br>
+						<input type="text" class="search_by_card" placeholder="Search by Card #">
+					</li>
+  				<% else %>
+  					<li role="presentation"><%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %></li>
+  				<% end %>
+			</ul>
+		</div>
+		<div id="content" class="col-sm-9">
+			<div id="user-widget">
+  				<% if current_user %>
+    				Current user: <strong><%= current_user.name %></strong>
+   					 <%= link_to "Sign out", signout_path, id: "sign_out" %>
+  				<% end %>
+			</div>
+			<div stlye="clear:both"></div>
+			<%= yield %>
+		</div>
 	</div>
 </body>
 </html>
