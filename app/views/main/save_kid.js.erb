@@ -1,1 +1,14 @@
-alert('<%= @message %>')
+<% if @message == 'success' %>
+	<% if @add_another == true %>
+		$.redirect("signup",{ 	parent_name: '<%= escape_javascript(@parent_name) %>', 
+								parent_card: '<%= escape_javascript(@parent_card) %>' , 
+								authenticity_token: '<%= escape_javascript(@token) %>'
+							}); 
+	<% else %>
+	<% end %>
+<% else %>
+	$('#messages').html('<p><%= escape_javascript(@message)%></p>')
+<% end %>
+
+
+

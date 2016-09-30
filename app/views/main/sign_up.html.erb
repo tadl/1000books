@@ -1,3 +1,4 @@
+<%= javascript_tag "token = '#{form_authenticity_token}'" %>
 <h3>Sign Up New Participant</h3>
 
 <div id="new_list_form">
@@ -6,6 +7,10 @@
 	  		<h5>Parent Card #: <%= @parent_card %></h5>
 	  		<input type="hidden" id="parent_name" value="<%= @parent_name %>">
 	  		<input type="hidden" id="parent_card" value="<%= @parent_card %>">
+	  		<h5>Participants Registered to This Parent:</h5>
+	  		<% @already_registered.each do |kid| %>
+	  			<p><a onclick="load_update('<%= kid.id %>','<%=escape_javascript(@parent_card)%>','<%=escape_javascript(@parent_name)%>', token)"><%= kid.name %></a></p>
+	  		<% end %>
 	  	<% else %>
 	  		<div class="input-group padding-all">
 	  			<label for="parent_name">Parent Name:</label>
@@ -20,11 +25,12 @@
 	  <label for="kid_name">Participant Name:</label>
 	  <input id="kid_name" type="text" class="form-control" placeholder="">
 	</div>
+	<div id="messages"></div>
 	<div class="btn-group padding-all">
-		<button type="button" class="btn btn-success" onclick="participant_list('false')">Save</button>
+		<button type="button" class="btn btn-success" onclick="participant_list('false', token)">Save</button>
 	</div>
 	<div class="btn-group padding-all">
-		<button type="button" class="btn btn-success" onclick="participant_list('true')">Save and Add Another</button>
+		<button type="button" class="btn btn-success" onclick="participant_list('true', token)">Save and Add Another</button>
 	</div>
 </div>
 <div id="messages" class="padding-all">

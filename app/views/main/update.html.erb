@@ -1,0 +1,9 @@
+<h3><%= @kid.name %></h3>
+<p>Has been read <%= @kid.book_count %> books so far</p>
+<div class="input-group padding-all">
+  <label for="book_count">Record new books: </label>
+  <input id="book_count" type="text" maxlength="3" size="3" placeholder="">
+</div>
+<div class="btn-group padding-all">
+	<button type="button" class="btn btn-success" onclick="participant_list('true', token)">Update</button>
+</div>
