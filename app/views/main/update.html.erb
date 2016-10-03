@@ -1,9 +1,12 @@
 <h3><%= @kid.name %></h3>
-<p>Has been read <%= @kid.book_count %> books so far</p>
+<p>Has been read <span id="book_count"><%= @kid.book_count %></span> books so far</p>
 <div class="input-group padding-all">
-  <label for="book_count">Record new books: </label>
-  <input id="book_count" type="text" maxlength="3" size="3" placeholder="">
+  <label for="add_books">Record new books: </label>
+  <input id="add_books" type="text" maxlength="3" size="3" placeholder="">
 </div>
 <div class="btn-group padding-all">
-	<button type="button" class="btn btn-success" onclick="participant_list('true', token)">Update</button>
+	<button type="button" class="btn btn-success" onclick="update_book_count('<%= @kid_id %>','<%= escape_javascript(@parent_card) %>')">Update</button>
+</div>
+<div id="book_count_graphic">
+	<%= render 'book_graphic', kid: @kid %>
 </div>

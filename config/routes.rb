@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   match 'signup', to: 'main#sign_up', as: 'signup', via: [:get, :post]
   match 'save_kid', to: 'main#save_kid', as: 'save_kid', via: [:get, :post]
   match 'update', to: 'main#update', as: 'update', via: [:get, :post]
+  match 'update_book_count', to: 'main#update_book_count', as: 'update_book_count', via: [:get, :post]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

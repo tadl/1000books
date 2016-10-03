@@ -1,0 +1,10 @@
+<% @kid.book_count.times.each_slice(40).reverse_each do |slice| %>
+	<div style="width: 602px; height: 39px; margin-bottom: 6px; border-bottom: 3px solid #000;">
+	<% slice.each do |i|%>  
+		<% @height = rand(25..35) %>
+		<% @width = rand(8..10) %>
+		<% @color = $valid_colors.sample%>
+		<div style="display: inline-block; vertical-align: bottom; height: <%= @height %>px; width: <%= @width %>px; margin-right:2px; background-color: <%= @color %>">&nbsp;</div>
+	<% end %>
+	</div>
+<% end %>					

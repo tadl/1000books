@@ -12,3 +12,8 @@ function load_update(kid_id, parent_card, parent_name, token){
 							authenticity_token: token 
 							}); 
 }
+
+function update_book_count(kid_id, parent_card){
+	var add_books = $('#add_books').val()
+	$.post("update_book_count.js", {parent_card: parent_card, kid_id: kid_id, add_books: add_books})
+}
